@@ -1,0 +1,193 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — Portal Komunitas
+ * Ported 1:1 from the Lovable prototype. Semua warna didefinisikan sebagai
+ * CSS variable di :root / .dark. Ganti nilai di dua blok itu untuk mengganti
+ * seluruh brand color.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--surface-foreground);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--surface-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-soft: var(--secondary-soft);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-whatsapp: var(--whatsapp);
+  --color-overlay: var(--overlay);
+  --color-overlay-foreground: var(--overlay-foreground);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand */
+  --primary: oklch(0.475 0.076 189.5); /* #0F6E6A deep teal */
+  --primary-foreground: oklch(0.985 0.005 95);
+  --primary-soft: oklch(0.94 0.025 190);
+  --secondary: oklch(0.775 0.128 72); /* #E8A33D warm amber */
+  --secondary-foreground: oklch(0.26 0.03 60);
+  --secondary-soft: oklch(0.95 0.045 80);
+  --accent: oklch(0.775 0.128 72);
+  --accent-foreground: oklch(0.26 0.03 60);
+
+  /* Surfaces */
+  --background: oklch(0.977 0.005 95); /* #FAF9F6 off-white */
+  --foreground: oklch(0.268 0.017 197); /* #1F2A2B soft ink */
+  --surface: oklch(1 0 0);
+  --surface-foreground: oklch(0.268 0.017 197);
+  --muted: oklch(0.955 0.006 100);
+  --muted-foreground: oklch(0.52 0.014 197);
+  --border: oklch(0.905 0.008 90); /* #E2E0DA */
+  --input: oklch(0.905 0.008 90);
+  --ring: oklch(0.475 0.076 189.5);
+
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(0.985 0.005 95);
+  --whatsapp: oklch(0.62 0.15 148);
+  --overlay: oklch(0.17 0.011 197 / 0.96);
+  --overlay-foreground: oklch(0.96 0.004 197);
+
+  --shadow-soft: 0 1px 2px oklch(0.268 0.017 197 / 0.05), 0 6px 20px -12px oklch(0.268 0.017 197 / 0.18);
+  --shadow-lift: 0 2px 6px oklch(0.268 0.017 197 / 0.06), 0 18px 40px -20px oklch(0.268 0.017 197 / 0.28);
+}
+
+.dark {
+  --primary: oklch(0.72 0.088 187); /* lifted teal for contrast on dark */
+  --primary-foreground: oklch(0.19 0.02 197);
+  --primary-soft: oklch(0.3 0.04 190);
+  --secondary: oklch(0.81 0.12 74);
+  --secondary-foreground: oklch(0.22 0.03 60);
+  --secondary-soft: oklch(0.32 0.05 70);
+  --accent: oklch(0.81 0.12 74);
+  --accent-foreground: oklch(0.22 0.03 60);
+
+  --background: oklch(0.196 0.011 197); /* #12181A deep slate */
+  --foreground: oklch(0.925 0.004 197); /* #E8ECEC */
+  --surface: oklch(0.245 0.012 197); /* #1C2426 */
+  --surface-foreground: oklch(0.925 0.004 197);
+  --muted: oklch(0.275 0.012 197);
+  --muted-foreground: oklch(0.735 0.01 197);
+  --border: oklch(0.315 0.013 197); /* #2A3335 */
+  --input: oklch(0.315 0.013 197);
+  --ring: oklch(0.72 0.088 187);
+
+  --destructive: oklch(0.65 0.17 25);
+  --destructive-foreground: oklch(0.98 0.005 95);
+  --whatsapp: oklch(0.72 0.15 148);
+  --overlay: oklch(0.13 0.008 197 / 0.96);
+  --overlay-foreground: oklch(0.96 0.004 197);
+
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.3), 0 6px 20px -12px oklch(0 0 0 / 0.6);
+  --shadow-lift: 0 2px 6px oklch(0 0 0 / 0.35), 0 18px 40px -20px oklch(0 0 0 / 0.75);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    transition:
+      background-color 300ms ease,
+      color 300ms ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility card-soft {
+  background-color: var(--color-surface);
+  color: var(--color-surface-foreground);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  transition:
+    box-shadow 250ms ease,
+    transform 250ms ease,
+    background-color 300ms ease;
+}
+
+@utility card-hover {
+  &:hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-2px);
+  }
+}
+
+@utility prose-reading {
+  & p {
+    margin-bottom: 1.15em;
+    line-height: 1.85;
+  }
+  & h2 {
+    font-size: 1.35rem;
+    margin: 1.8em 0 0.6em;
+  }
+  & blockquote {
+    border-left: 3px solid var(--color-secondary);
+    padding-left: 1rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-muted-foreground);
+    margin: 1.5em 0;
+  }
+  & ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-bottom: 1.15em;
+  }
+  & li {
+    margin-bottom: 0.4em;
+    line-height: 1.8;
+  }
+}
